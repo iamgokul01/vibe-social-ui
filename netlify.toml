@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single-page app history fallback.
+#
+# The client routes (/login, /posts, /analytics, /users, /safety) only exist in
+# the React router, so a reload or a shared deep link has to be answered with
+# index.html. Without this rule Netlify answers those paths with its own
+# "Page not found" page and the app looks like it crashed.
+#
+# Netlify serves real files (assets, images) before it applies a redirect, so
+# only unmatched paths fall through to index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
